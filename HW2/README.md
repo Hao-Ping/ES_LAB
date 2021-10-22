@@ -6,3 +6,7 @@
   mysocket.py will save the data to a csv file
   and acc_plot will read the csv and visualize the data
 <img width="400" alt="截圖 2021-10-22 下午1 49 17" src="https://user-images.githubusercontent.com/49761419/138414619-046fc434-872e-44b0-8d32-560308a7776e.png">
+
+
+https://user-images.githubusercontent.com/49761419/138414771-21eb5f2d-662d-4c20-97cf-9840b4fadca8.mov
+
