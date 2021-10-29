@@ -3,6 +3,7 @@ from bluepy.btle import Scanner, DefaultDelegate
 class ScanDelegate(DefaultDelegate):
     def __init__(self):
         DefaultDelegate.__init__(self)
+        
     def handleDiscovery(self, dev, isNewDev, isNewData):
         if isNewDev:
             print("Discovered device", dev.addr)
@@ -38,15 +39,30 @@ for svc in dev.services:
  
 try:
     testService = dev.getServiceByUUID(UUID(0x1809))
+    print('=> dev.getServiceByUUID: ', testService)
     for ch in testService.getCharacteristics():
         print(str(ch))
             
-    ch = dev.getCharacteristics(uuid=UUID(0x2A1E))[0]
-    if (ch.supportsRead()):
-        print('ch.read: ', ch.read())
-
+    ch1 = dev.getCharacteristics(uuid=UUID(0x2A1E))[0]
     ch2 = dev.getCharacteristics(uuid=UUID(0x2A1C))[0]
-    ch2.write('0000000')
+    
+    counter = 0
+    
+    while(True):
+        if dev.waitForNotifications(3.0):
+            print('Notification!')
+            
+        if (ch1.supportsRead()):
+            print('ch1 read from iPhone: ', ch1.read())
+        else:
+            print('ch1 supportsRead = False')
+        
+        ch2.write(str(counter))
+        
+        print('Waiting....')
+        
+        counter += 1
+
             
 finally:
     dev.disconnect() 
