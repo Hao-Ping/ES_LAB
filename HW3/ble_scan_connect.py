@@ -14,13 +14,20 @@ devices = scanner.scan(10.0)
 n=0
 for dev in devices:
     print("%d: Device %s (%s), RSSI=%d dB" % (n, dev.addr,dev.addrType, dev.rssi))
-    n += 1
+    
 
-for (adtype, desc, value) in dev.getScanData():
-    print(" %s = %s" % (desc, value))
+    for (adtype, desc, value) in dev.getScanData():
+        if value == "Health Thermometer":
+            print('-------------------')
+            print(n, desc, value) 
+            print('-------------------')
+
+            #print(" %s = %s" % (desc, value))
+    n += 1
+    
 number = input('Enter your device number: ')
 print('Device', number)
-print(devices[number].addr)
+print('Device address: ',  devices[number].addr)
 
 print("Connecting...")
 dev = Peripheral(devices[number].addr, 'random')
@@ -30,13 +37,16 @@ for svc in dev.services:
     print(str(svc))
  
 try:
-    testService = dev.getServiceByUUID(UUID(0x180E))
+    testService = dev.getServiceByUUID(UUID(0x1809))
     for ch in testService.getCharacteristics():
         print(str(ch))
             
-    ch = dev.getCharacteristics(uuid=UUID(0x2A41))[0]
+    ch = dev.getCharacteristics(uuid=UUID(0x2A1E))[0]
     if (ch.supportsRead()):
-        print(ch.read())
+        print('ch.read: ', ch.read())
+
+    ch2 = dev.getCharacteristics(uuid=UUID(0x2A1C))[0]
+    ch2.write('0000000')
             
 finally:
     dev.disconnect() 
