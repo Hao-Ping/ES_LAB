@@ -18,18 +18,18 @@ int main() {
     
     while(1){ //infinite loop
                  
-        PwmPin.write(0.75f);       // Set the duty cycle to 0%
-        PwmPin.write(0.933f);       // Set the duty cycle to 0%
-        PwmPin.write(1.0f);       // Set the duty cycle to 0%
-        PwmPin.write(0.933f);       // Set the duty cycle to 0%
-        PwmPin.write(0.75f);       // Set the duty cycle to 0%
-        PwmPin.write(0.50f);       // Set the duty cycle to 0%
-        PwmPin.write(0.25f);       // Set the duty cycle to 0%
-        PwmPin.write(0.066f);       // Set the duty cycle to 0%
-        PwmPin.write(0.0f);       // Set the duty cycle to 0%
-        PwmPin.write(0.066f);       // Set the duty cycle to 0%
-        PwmPin.write(0.25f);       // Set the duty cycle to 0%
-        PwmPin.write(0.50f);       // Set the duty cycle to 0%
+        PwmPin.write(0.75f);       // Set the duty cycle to 75%
+        PwmPin.write(0.933f);       // Set the duty cycle to 93%
+        PwmPin.write(1.0f);       // Set the duty cycle to 100%
+        PwmPin.write(0.933f);       // Set the duty cycle to 93%
+        PwmPin.write(0.75f);       // Set the duty cycle to 75%
+        PwmPin.write(0.50f);       
+        PwmPin.write(0.25f);       
+        PwmPin.write(0.066f);       
+        PwmPin.write(0.0f);       
+        PwmPin.write(0.066f);       
+        PwmPin.write(0.25f);       
+        PwmPin.write(0.50f);       
 
     }      
 } 
